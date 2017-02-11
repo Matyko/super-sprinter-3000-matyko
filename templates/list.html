@@ -1,0 +1,48 @@
+<!doctype html>
+<title>Sprinter 3000</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <table>
+    <colgroup>
+    <col style="background-color:white">
+    <col style="background-color:#d0f0c0">
+    <col style="background-color:white">
+    <col style="background-color:#d0f0c0">
+    <col style="background-color:white">
+    <col style="background-color:#d0f0c0">
+    <col style="background-color:white">
+    </colgroup>
+      <tr align="left">
+        <th>Id</th>
+        <th>Story name</th>
+        <th>User story</th>
+        <th>Acceptance criteria</th>
+        <th>Business value</th>
+        <th>Estimation</th>
+        <th>Status</th>
+        <th>Options</th>
+      </tr>
+        {% for story in stories %}
+      <tr>
+        <td>{{ story.id }}</td>
+        <td>{{ story.story_name }}</td>
+        <td>{{ story.user_story }}</td>
+        <td>{{ story.acceptance_criteria }}</td>
+        <td>{{ story.business_value }}</td>
+        <td>{{ story.estimation }}</td>
+        <td>{{ story.status }}</td>
+        <td align="center">
+            <a href="{{ url_for('show_update_form', story_id=story.id ) }}"><img src="http://simpleicon.com/wp-content/uploads/pen-15.png" height="20px">
+            </a>
+            <a href="{{ url_for('delete_story', story_id=story.id ) }}"><img src="http://simpleicon.com/wp-content/uploads/trash.png" height="20px">
+            </a>
+        </td>
+      </tr>
+        {% else %}
+        <tr>
+            No stories yet.
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('show_form') }}" class="button"><span>Add new story</span></a>
+</div>

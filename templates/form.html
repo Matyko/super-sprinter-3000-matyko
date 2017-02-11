@@ -1,0 +1,66 @@
+<!doctype html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=formpage>
+    {% if stories > 0 %}
+        <title>Sprinter 3000 - Edit story</title>
+    <form action="{{ url_for('modify_story') }}" method='POST' class="add-story">
+      {% for story in stories %}
+      <dl>
+        <dt><input type=hidden size=1 name='story_id' readonly value={{ story.id }}>
+        <dt>Story name:
+        <dt><input type=text size=30 name='story_name' value={{ story.story_name }}>
+        <dt>User story:
+        <dt><textarea name="user_story" rows=5 cols=40>{{ story.user_story }}</textarea>
+        <dt>Acceptance criteria:
+        <dt><textarea name="acceptance_criteria" rows=5 cols=40>{{ story.acceptance_criteria }}</textarea>
+        <dt>Business value:
+        <dt><input type="range" name="business_value" id="businessInputId"  value={{ story.business_value }} min="100" max="1500" step="100" oninput="businessOutputId.value = businessInputId.value">
+            <output name="businessOutput" id="businessOutputId">{{ story.business_value }}</output>
+        <dt>Estimation:
+        <dt><input type="range" name="estimation" id="estimationInputId"  value={{ story.estimation }} min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
+            <output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
+        <dt>Status:
+        <dt><select name=status>
+            <option selected={{ story.status }}>{{ story.status }}</option>
+            <option value="Planning">Planning</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Review">Review</option>
+            <option value="Done">Done</option>
+            </select>
+          <dt><input type=submit value=Update>
+          <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
+      </dl>
+      {% endfor %}
+    </form>
+    {% else %}
+        <title>Sprinter 3000 - Add new story</title>
+    <form action="{{ url_for('add_story') }}" method='POST' class="add-story">
+        <dl>
+        <dt>Story name:
+        <dt><input type=text size=30 name='story_name'>
+        <dt>User story:
+        <dt><textarea name="user_story" rows=5 cols=40></textarea>
+        <dt>Acceptance criteria:
+        <dt><textarea name="acceptance_criteria" rows=5 cols=40></textarea>
+        <dt>Business value:
+        <dt><input type="range" name="business_value" id="businessInputId"  value=100 min="100" max="1500" step="100" oninput="businessOutputId.value = businessInputId.value">
+            <output name="businessOutput" id="businessOutputId">100</output>
+        <dt>Estimation:
+        <dt><input type="range" name="estimation" id="estimationInputId"  value=0.5 min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
+            <output name="estimationOutput" id="estimationOutputId">0</output>
+        <dt>Status:
+        <dt><select name=status>
+            <option value="Planning">Planning</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Review">Review</option>
+            <option value="Done">Done</option>
+            </select>
+
+        <dt><input type=submit value=Save>
+            <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
+        </dl>
+    </form>
+    {% endif %}
+</div>
