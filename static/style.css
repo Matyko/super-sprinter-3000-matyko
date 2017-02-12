@@ -1,25 +1,34 @@
-body                        { font-family: 'Pacifico', cursive; background: #d0f0c0; font-weight: lighter;}
+body                        { font-family: 'Pacifico', cursive; font-size: 1em; font-weight: lighter; background: #d0f0c0;}
+body:hover                  { background: #ffcc99; transition: 0.5s }
 a, h2                       { color: #4d4d4d; }
-h1, h2                      { font-family: 'Pacifico', cursive; 'Lato', sans-serif; margin: 0; }
 h1                          { margin-bottom: 5%;  background-color: #d0f0c0; border-radius: 6px; color: white; padding: 5px;}
 h2                          { font-size: 1.2em; }
 table                       { table-layout: auto; border: solid #d0f0c0;
                               border-collapse:separate;  border-radius:6px;
                               -moz-border-radius:6px; width: 100%;
                               page-break-inside: auto; padding: 2px; color:#4d4d4d;}
-table tr                    { border-bottom: thin}
-table th                    { white-space: nowrap; padding: 5px; }
+table tr                    { height: 20px; overflow: scroll;}
+table th                    { white-space: nowrap; padding: 5px; font-family: 'Fredoka one', sans-serif;}
 table td                    { padding: 5px; }
 table tr:hover              { background-color: #ffcc99; transition: 0.5s; }
 dt + dt                     { margin-top: 3%;}
 
-input                       { max-width: 100%; border-radius: 6px; border-color: #ffcc99}
-textarea                    { max-width: 100%; border-radius: 6px; border-color: #ffcc99}
+input                       { max-width: 100%; border-radius: 6px; border-color: #ffcc99; background-color: #d0f0c0}
+textarea                    { max-width: 100%; border-radius: 6px; border-color: #ffcc99; background-color: #ffcc99}
 input:hover                 { border-color: #d0f0c0; transition: 0.5s;}
 textarea:hover                 { border-color: #d0f0c0; transition: 0.5s;}
 
 h1:hover {
     background-color: #ffcc99;
+}
+
+input[type=text] {
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
 }
 
 a.button:hover{
@@ -73,7 +82,9 @@ a.button:hover span:after {
                               padding: 2em; background: white; border-radius:6px; box-shadow: 1px 1px 0 #ffcc99 , 2px 2px 0 #ffcc99 , 3px 3px 0 #ffcc99 , 4px 4px 0 #ffcc99 , 5px 5px 0 #ffcc99 , 6px 6px 0 #ffcc99 , 7px 7px 0 #ffcc99 , 8px 8px 0 #ffcc99 , 9px 9px 0 #ffcc99; }
 .page                       { margin: 2em auto; width: 90%; border: 5px solid #ffcc99;font-weight: bolder; color:#4d4d4d;
                               padding: 2em; background: white; border-radius:6px; box-shadow: 1px 1px 0 #ffcc99 , 2px 2px 0 #ffcc99 , 3px 3px 0 #ffcc99 , 4px 4px 0 #ffcc99 , 5px 5px 0 #ffcc99 , 6px 6px 0 #ffcc99 , 7px 7px 0 #ffcc99 , 8px 8px 0 #ffcc99 , 9px 9px 0 #ffcc99;}
-.add-story                  { padding: 5%; margin-top: 80px; }
+.formpage:hover             { border: 5px solid #d0f0c0; box-shadow: 1px 1px 0 #d0f0c0 , 2px 2px 0 #d0f0c0 , 3px 3px 0 #d0f0c0 , 4px 4px 0 #d0f0c0 , 5px 5px 0 #d0f0c0 , 6px 6px 0 #d0f0c0 , 7px 7px 0 #d0f0c0 , 8px 8px 0 #d0f0c0 , 9px 9px 0 #d0f0c0; transition: 0.5s;}
+.page:hover                 { border: 5px solid #d0f0c0; box-shadow: 1px 1px 0 #d0f0c0 , 2px 2px 0 #d0f0c0 , 3px 3px 0 #d0f0c0 , 4px 4px 0 #d0f0c0 , 5px 5px 0 #d0f0c0 , 6px 6px 0 #d0f0c0 , 7px 7px 0 #d0f0c0 , 8px 8px 0 #d0f0c0 , 9px 9px 0 #d0f0c0; transition: 0.5s;}
+.add-story                  { padding: 5%; margin-top: 85px; }
 .stories                    { list-style: none; margin: 0; padding: 0; }
 .flash                      { background: #cee5F5; padding: 0.5em;
                               border: 1px solid #aacbe2; }
@@ -194,7 +205,7 @@ input[type=range]:focus::-ms-fill-upper {
     width: 120px;
     border-radius: 3px;
     overflow: hidden;
-    background: #fafafa url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 90% 50%;
+    background: #FFCC99 url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 90% 50%;
 }
 
 .select-style select {

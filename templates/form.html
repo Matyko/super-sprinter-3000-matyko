@@ -1,5 +1,5 @@
 <!doctype html>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styletests.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Fredoka%20One" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
 <div class=formpage>
@@ -14,7 +14,7 @@
         <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
             <dt>
             <dt><label for="story_name">Story name</label>
-            <dt><input type=text size=30 name='story_name' id="story_name" value={{ story.story_name }}>
+            <dt><textarea name='story_name' id="story_name" rows=1 cols=40>{{ story.story_name }}</textarea>
             <dt><label for="user_story">User story</label>
             <dt><textarea name="user_story" id="user_story" rows=5 cols=40>{{ story.user_story }}</textarea>
             <dt><label for="acceptance">Acceptance criteria</label>
