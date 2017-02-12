@@ -1,5 +1,5 @@
 body {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Patrick Hand', cursive;
     font-size: 1em;
     font-weight: lighter;
     background: #d0f0c0;
@@ -67,7 +67,7 @@ dt + dt {
 
 textarea {
     white-space: pre-line;
-    font-family: Pacifico, cursive;
+    font-family: 'Patrick Hand', cursive;
     font-weight: lighter;
     width: 100%;
     border-radius: 6px;
@@ -105,6 +105,7 @@ a.button:hover {
 }
 
 a.button {
+    font-family: 'Fredoka one', sans-serif;
     display: inline-block;
     border-radius: 4px;
     background-color: #d0f0c0;
