@@ -37,7 +37,9 @@ def close_db(error):
 @app.route('/list')
 def show_list():
     stories = Stories.select().order_by(Stories.id.asc())
-    return render_template('list.html', stories=stories)
+    address = request.url
+    print(address)
+    return render_template('list.html', stories=stories, address=address)
 
 
 @app.route('/story', methods=['GET', 'POST'])

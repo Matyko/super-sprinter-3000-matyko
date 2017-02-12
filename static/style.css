@@ -129,6 +129,18 @@ a.button span:after {
     transition: 0.5s;
 }
 
+.welcome_text {
+    border: none;
+    font-family:"Fredoka One", Helvetica, sans-serif;
+    font-size: 10em;
+    color: #FFFFFF;
+    position: absolute;
+    text-align: center;
+    text-shadow: 1px 1px 0 #ffcc99, 2px 2px 0 #ffcc99, 3px 3px 0 #ffcc99, 4px 4px 0 #ffcc99, 5px 5px 0 #ffcc99, 6px 6px 0 #ffcc99, 7px 7px 0 #ffcc99, 8px 8px 0 #ffcc99, 9px 9px 0 #ffcc99;
+    opacity: 0;
+    animation: FlyIn 4s ease, FadeIn 8s ease;
+}
+
 a.button:hover span {
     padding-right: 25px;
 }
@@ -139,6 +151,7 @@ a.button:hover span:after {
 }
 
 .formpage {
+    animation: FadeIn 1s ease-in-out;
     margin: 2em auto;
     width: 40%;
     border: 5px solid #ffcc99;
@@ -151,6 +164,9 @@ a.button:hover span:after {
 }
 
 .page {
+    opacity: 0;
+    animation: FadeIn 1s ease-in-out;
+    animation-fill-mode: forwards;
     margin: 2em auto;
     width: 90%;
     border: 5px solid #ffcc99;
@@ -160,6 +176,10 @@ a.button:hover span:after {
     background: white;
     border-radius: 6px;
     box-shadow: 1px 1px 0 #ffcc99, 2px 2px 0 #ffcc99, 3px 3px 0 #ffcc99, 4px 4px 0 #ffcc99, 5px 5px 0 #ffcc99, 6px 6px 0 #ffcc99, 7px 7px 0 #ffcc99, 8px 8px 0 #ffcc99, 9px 9px 0 #ffcc99;
+}
+
+.delayed {
+    animation-delay: 4s;
 }
 
 .formpage:hover {
@@ -337,4 +357,36 @@ input[type=range]:focus::-ms-fill-upper {
 
 .select-style select:focus {
     outline: none;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@keyframes FadeOut {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
+
+@keyframes FlyIn {
+ 0%   {
+ -moz-transform: translateY(200%);
+ -webkit-transform: translateY(200%);
+ transform: translateY(200%);
+ }
+ 100% {
+ -moz-transform: translateY(0%);
+ -webkit-transform: translateY(0%);
+ transform: translateY(0%);
+ }
 }
