@@ -43,7 +43,7 @@ def show_list():
 
 @app.route('/story', methods=['GET', 'POST'])
 def show_form():
-    return render_template('form.html', stories=0)
+    return render_template('form.html', mode='add')
 
 
 @app.route('/add', methods=['GET', 'POST'])
@@ -78,7 +78,8 @@ def modify_story():
 @app.route('/story/<story_id>', methods=['GET', 'POST'])
 def show_update_form(story_id):
     stories = Stories.select().where(Stories.id == story_id)
-    return render_template('form.html', stories=stories)
+    for story in stories:
+        return render_template('form.html', story=story, mode='update')
 
 
 @app.route('/del/<story_id>', methods=['GET', 'POST'])
