@@ -24,12 +24,12 @@
                           cols=40>{{ story.acceptance_criteria }}</textarea>
             <dt><label for="businessInputId">Business value</label>
             <dt><input type="range" name="business_value" id="businessInputId"
-                       value={{ story.business_value }} min="100" max="1500" step="100"
+                       value="{{ story.business_value }}" min="100" max="1500" step="100"
                        oninput="businessOutputId.value = businessInputId.value">
             <dt>
                 <output name="businessOutput" id="businessOutputId">{{ story.business_value }}</output>
             <dt><label for="estimationInputId">Estimation</label>
-            <dt><input type="range" name="estimation" id="estimationInputId" value={{ story.estimation }} min="0.5"
+            <dt><input type="range" name="estimation" id="estimationInputId" value="{{ story.estimation }}" min="0.5"
                        max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
             <dt>
                 <output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
