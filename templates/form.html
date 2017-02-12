@@ -10,9 +10,9 @@
         <title>Sprinter 3000 - Add new story</title>
         <div class="long-shadow" align="center">add new story</div>
     {% endif %}
-
+    <dl>
         <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
-            <dl>
+            <dt>
             <dt><label for="story_name">Story name</label>
             <dt><input type=text size=30 name='story_name' id="story_name" value={{ story.story_name }}>
             <dt><label for="user_story">User story</label>
@@ -27,25 +27,25 @@
             <dt><output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
             <dt><label for="status">Status</label>
             <dt><div class="select-style">
-            <dt><select name=status id="status">
-            <option selected={{ story.status }}>{{ story.status }}</option>
-            <option value="Planning">Planning</option>
-            <option value="To Do">To Do</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Review">Review</option>
-            <option value="Done">Done</option>
+            <select name=status id="status">
+                <option selected={{ story.status }}>{{ story.status }}</option>
+                <option value="Planning">Planning</option>
+                <option value="To Do">To Do</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Review">Review</option>
+                <option value="Done">Done</option>
             </select></div>
-          {% if mode == 'update' %}
-          <dt>
-          <a href="#" onclick="document.modify.submit();" class="button"><span>Update</span></a>
-          <input type=hidden size=1 name='story_id' readonly id="story_id" value={{ story.id }} >
-          <input type=hidden size=1 name='submit_type' readonly id="story_id" value='update' >
-          {% elif mode == 'save' %}
-          <dt>
-          <a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
-          <input type=hidden size=1 name='submit_type' readonly id="story_id" value='save' >
-          {% endif %}
-          <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
-          </dl>
-        </form>
-    </div>
+            <dt>
+                {% if mode == 'update' %}
+                    <a href="#" onclick="document.add.submit();" class="button"><span>Update</span></a>
+                    <input type=hidden size=1 name='story_id' readonly id="story_id" value={{ story.id }} >
+                    <input type=hidden size=1 name='submit_type' readonly id="submit_id" value='update' >
+                {% elif mode == 'save' %}
+                    <a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
+                    <input type=hidden size=1 name='submit_type' readonly id="submit_id" value='save' >
+                {% endif %}
+                <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
+            </dt>
+    </dl>
+    </form>
+</div>
