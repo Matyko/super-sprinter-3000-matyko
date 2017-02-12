@@ -1,9 +1,11 @@
 <!doctype html>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styletests.css') }}">
 <div class=formpage>
     {% if stories > 0 %}
         <title>Sprinter 3000 - Edit story</title>
-    <form action="{{ url_for('modify_story') }}" method='POST' class="add-story">
+        <div class="long-shadow" align="center">edit story</div>
+        <link href="http://fonts.googleapis.com/css?family=Fredoka%20One" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+    <form action="{{ url_for('modify_story') }}" method='POST' class="add-story" name="modify">
       {% for story in stories %}
       <dl>
         <dt><input type=hidden size=1 name='story_id' readonly value={{ story.id }}>
@@ -20,22 +22,25 @@
         <dt><input type="range" name="estimation" id="estimationInputId"  value={{ story.estimation }} min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
             <output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
         <dt>Status:
-        <dt><select name=status>
+        <dt><div class="select-style">
+            <select name=status>
             <option selected={{ story.status }}>{{ story.status }}</option>
             <option value="Planning">Planning</option>
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>
             <option value="Review">Review</option>
             <option value="Done">Done</option>
-            </select>
-          <dt><input type=submit value=Update>
+            </select></div>
+          <dt><a href="#" onclick="document.modify.submit();" class="button"><span>Update</span></a>
           <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
       </dl>
       {% endfor %}
     </form>
     {% else %}
         <title>Sprinter 3000 - Add new story</title>
-    <form action="{{ url_for('add_story') }}" method='POST' class="add-story">
+        <div class="long-shadow" align="center">add new story</div>
+        <link href="http://fonts.googleapis.com/css?family=Fredoka%20One" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
+    <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
         <dl>
         <dt>Story name:
         <dt><input type=text size=30 name='story_name'>
@@ -50,15 +55,16 @@
         <dt><input type="range" name="estimation" id="estimationInputId"  value=0.5 min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
             <output name="estimationOutput" id="estimationOutputId">0</output>
         <dt>Status:
-        <dt><select name=status>
+        <dt><div class="select-style">
+            <select name=status>
             <option value="Planning">Planning</option>
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>
             <option value="Review">Review</option>
             <option value="Done">Done</option>
-            </select>
+            </select></div>
 
-        <dt><input type=submit value=Save>
+        <dt><a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
             <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
         </dl>
     </form>

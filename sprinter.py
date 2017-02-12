@@ -1,16 +1,13 @@
-# all the imports
-import os
 from peewee import *
 from connect import ConnectDatabase
 from models import Stories
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash, current_app
+from flask import Flask, request,  g, redirect, url_for, \
+    render_template, flash
 
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-# Load default config and override config from an environment variable
 app.config.update(dict(
     DEBUG=True,
     SECRET_KEY='development key'
@@ -84,14 +81,12 @@ def show_update_form(story_id):
     return render_template('form.html', stories=stories)
 
 
-@app.route('/del/<story_id>', methods=['GET', 'POST',])
+@app.route('/del/<story_id>', methods=['GET', 'POST'])
 def delete_story(story_id):
     stories = Stories.select().where(Stories.id == story_id)
     for story in stories:
         story.delete_instance()
     return redirect(url_for('show_list'))
-
-
 
 
 if __name__ == '__main__':
