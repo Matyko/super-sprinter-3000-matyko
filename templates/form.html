@@ -6,25 +6,28 @@
     {% if mode == 'update' %}
         <title>Sprinter 3000 - Edit story</title>
         <div class="long-shadow" align="center">edit story</div>
-    <form action="{{ url_for('modify_story') }}" method='POST' class="add-story" name="modify">
-      <dl>
-        <dt><input type=hidden size=1 name='story_id' readonly id="story_id" value={{ story.id }} >
-        <dt>Story name:
-          <label for="modify_story_name">Story name</label>
-        <dt><input type=text size=30 name='story_name' id="modify_story_name" value={{ story.story_name }}>
-        <dt>User story:
-        <dt><textarea name="user_story" rows=5 cols=40>{{ story.user_story }}</textarea>
-        <dt>Acceptance criteria:
-        <dt><textarea name="acceptance_criteria" rows=5 cols=40>{{ story.acceptance_criteria }}</textarea>
-        <dt>Business value:
-        <dt><input type="range" name="business_value" id="businessInputId"  value={{ story.business_value }} min="100" max="1500" step="100" oninput="businessOutputId.value = businessInputId.value">
-            <output name="businessOutput" id="businessOutputId">{{ story.business_value }}</output>
-        <dt>Estimation:
-        <dt><input type="range" name="estimation" id="estimationInputId"  value={{ story.estimation }} min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
-            <output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
-        <dt>Status:
-        <dt><div class="select-style">
-            <select name=status>
+    {% else %}
+        <title>Sprinter 3000 - Add new story</title>
+        <div class="long-shadow" align="center">add new story</div>
+    {% endif %}
+
+        <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
+            <dl>
+            <dt><label for="story_name">Story name</label>
+            <dt><input type=text size=30 name='story_name' id="story_name" value={{ story.story_name }}>
+            <dt><label for="user_story">User story</label>
+            <dt><textarea name="user_story" id="user_story" rows=5 cols=40>{{ story.user_story }}</textarea>
+            <dt><label for="acceptance">Acceptance criteria</label>
+            <dt><textarea name="acceptance_criteria" id="acceptance" rows=5 cols=40>{{ story.acceptance_criteria }}</textarea>
+            <dt><label for="businessInputId">Business value</label>
+            <dt><input type="range" name="business_value" id="businessInputId"  value={{ story.business_value }} min="100" max="1500" step="100" oninput="businessOutputId.value = businessInputId.value">
+            <dt><output name="businessOutput" id="businessOutputId">{{ story.business_value }}</output>
+            <dt><label for="estimationInputId">Estimation</label>
+            <dt><input type="range" name="estimation" id="estimationInputId"  value={{ story.estimation }} min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
+            <dt><output name="estimationOutput" id="estimationOutputId">{{ story.estimation }}</output>
+            <dt><label for="status">Status</label>
+            <dt><div class="select-style">
+            <dt><select name=status id="status">
             <option selected={{ story.status }}>{{ story.status }}</option>
             <option value="Planning">Planning</option>
             <option value="To Do">To Do</option>
@@ -32,40 +35,17 @@
             <option value="Review">Review</option>
             <option value="Done">Done</option>
             </select></div>
-          <dt><a href="#" onclick="document.modify.submit();" class="button"><span>Update</span></a>
+          {% if mode == 'update' %}
+          <dt>
+          <a href="#" onclick="document.modify.submit();" class="button"><span>Update</span></a>
+          <input type=hidden size=1 name='story_id' readonly id="story_id" value={{ story.id }} >
+          <input type=hidden size=1 name='submit_type' readonly id="story_id" value='update' >
+          {% elif mode == 'save' %}
+          <dt>
+          <a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
+          <input type=hidden size=1 name='submit_type' readonly id="story_id" value='save' >
+          {% endif %}
           <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
-      </dl>
-    </form>
-    {% else %}
-        <title>Sprinter 3000 - Add new story</title>
-        <div class="long-shadow" align="center">add new story</div>
-    <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
-        <dl>
-        <dt>Story name:
-        <dt><input type=text size=30 name='story_name'>
-        <dt>User story:
-        <dt><textarea name="user_story" rows=5 cols=40></textarea>
-        <dt>Acceptance criteria:
-        <dt><textarea name="acceptance_criteria" rows=5 cols=40></textarea>
-        <dt>Business value:
-        <dt><input type="range" name="business_value" id="businessInputId"  value=100 min="100" max="1500" step="100" oninput="businessOutputId.value = businessInputId.value">
-            <output name="businessOutput" id="businessOutputId">100</output>
-        <dt>Estimation:
-        <dt><input type="range" name="estimation" id="estimationInputId"  value=0.5 min="0.5" max="40" step="0.5" oninput="estimationOutputId.value = estimationInputId.value">
-            <output name="estimationOutput" id="estimationOutputId">0</output>
-        <dt>Status:
-        <dt><div class="select-style">
-            <select name=status>
-            <option value="Planning">Planning</option>
-            <option value="To Do">To Do</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Review">Review</option>
-            <option value="Done">Done</option>
-            </select></div>
-
-        <dt><a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
-            <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
-        </dl>
-    </form>
-    {% endif %}
-</div>
+          </dl>
+        </form>
+    </div>

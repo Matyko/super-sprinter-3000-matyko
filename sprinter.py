@@ -43,35 +43,33 @@ def show_list():
 
 @app.route('/story', methods=['GET', 'POST'])
 def show_form():
-    return render_template('form.html', mode='add')
+    return render_template('form.html', mode='save', story=0)
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_story():
-    new_story = Stories.create(story_name=request.form.get('story_name'),
-                               user_story=request.form.get('user_story'),
-                               acceptance_criteria=request.form.get('acceptance_criteria'),
-                               business_value=request.form.get('business_value'),
-                               estimation=request.form.get('estimation'),
-                               status=request.form.get('status')
-                               )
-    new_story.save()
-    flash('New story saved')
-    return redirect(url_for('show_list'))
-
-
-@app.route('/modify', methods=['GET', 'POST'])
-def modify_story():
-    story_to_modify = Stories.select().where(Stories.id == request.form['story_id'])
-    for story in story_to_modify:
-        story.story_name = request.form.get('story_name')
-        story.user_story = request.form.get('user_story')
-        story.acceptance_criteria = request.form.get('acceptance_criteria')
-        story.business_value = request.form.get('business_value')
-        story.estimation = request.form.get('estimation')
-        story.status = request.form.get('status')
-        story.save()
-        flash('Story modified')
+    print(request.form)
+    if request.form['submit_type'] == 'save':
+        new_story = Stories.create(story_name=request.form.get('story_name'),
+                                   user_story=request.form.get('user_story'),
+                                   acceptance_criteria=request.form.get('acceptance_criteria'),
+                                   business_value=request.form.get('business_value'),
+                                   estimation=request.form.get('estimation'),
+                                   status=request.form.get('status')
+                                   )
+        new_story.save()
+        flash('New story saved')
+    elif request.form['submit_type'] == 'update':
+        story_to_modify = Stories.select().where(Stories.id == request.form['story_id'])
+        for story in story_to_modify:
+            story.story_name = request.form.get('story_name')
+            story.user_story = request.form.get('user_story')
+            story.acceptance_criteria = request.form.get('acceptance_criteria')
+            story.business_value = request.form.get('business_value')
+            story.estimation = request.form.get('estimation')
+            story.status = request.form.get('status')
+            story.save()
+            flash('Story modified')
     return redirect(url_for('show_list'))
 
 
