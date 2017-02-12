@@ -1,9 +1,8 @@
 from peewee import *
 from connect import ConnectDatabase
 from models import Stories
-from flask import Flask, request,  g, redirect, url_for, \
+from flask import Flask, request, g, redirect, url_for, \
     render_template, flash
-
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -91,4 +90,3 @@ def delete_story(story_id):
 if __name__ == '__main__':
     init_db()
     app.run()
-
