@@ -27,7 +27,10 @@ h2 {
 }
 
 table {
+    white-space: pre-line;
     table-layout: auto;
+    overflow: hidden;
+    line-height: 120%;
     border: solid #d0f0c0;
     border-collapse: separate;
     border-radius: 6px;
@@ -63,6 +66,7 @@ dt + dt {
 }
 
 textarea {
+    white-space: pre-line;
     font-family: Pacifico, cursive;
     font-weight: lighter;
     width: 100%;
