@@ -1,0 +1,61 @@
+body {
+  padding-top: 50px;
+  font-family: 'Lato', sans-serif;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 5em;
+    animation: FlyIn 2s ease, FadeIn 4s ease;
+}
+
+.image-cropper {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+th {
+    white-space: nowrap;
+}
+
+tr.hover {
+    background-color: #999999;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@keyframes FadeOut {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}
+
+
+@keyframes FlyIn {
+ 0%   {
+ -moz-transform: translateY(200%);
+ -webkit-transform: translateY(200%);
+ transform: translateY(200%);
+ }
+ 100% {
+ -moz-transform: translateY(0%);
+ -webkit-transform: translateY(0%);
+ transform: translateY(0%);
+ }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<title>Sprinter 3000</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Fredoka%20One" data-generated="http://enjoycss.com" rel="stylesheet"
+      type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Bad+Script|Gochi+Hand|Just+Another+Hand|Neucha|Patrick+Hand|Rancho|Sue+Ellen+Francisco"
+      rel="stylesheet">
+{% if address == "http://127.0.0.1:5000/" %}
+    <div class="welcome_text">Super Sprinter 3000</div>
+    <div class="page delayed">
+{% else %}
+    <div class=page>
+{% endif %}
+<div class="long-shadow" align="center">Super Sprinter 3000</div>
+<table>
+    <colgroup>
+        <col style="background-color:white">
+        <col style="background-color:#d0f0c0">
+        <col style="background-color:white">
+        <col style="background-color:#d0f0c0">
+        <col style="background-color:white">
+        <col style="background-color:#d0f0c0">
+        <col style="background-color:white">
+    </colgroup>
+    <tr align="left">
+        <th>Id</th>
+        <th>Story name</th>
+        <th>User story</th>
+        <th>Acceptance criteria</th>
+        <th>Business value</th>
+        <th>Estimation</th>
+        <th>Status</th>
+        <th>Options</th>
+    </tr>
+    {% for story in stories %}
+        <tr>
+            <td class="col1">{{ story.id }}</td>
+            <td>{{ story.story_name }}</td>
+            <td>{{ story.user_story }}</td>
+            <td>{{ story.acceptance_criteria }}</td>
+            <td>{{ story.business_value }}</td>
+            <td>{{ story.estimation }}</td>
+            <td>{{ story.status }}</td>
+            <td align="center">
+                <a href="{{ url_for('show_update_form', story_id=story.id ) }}"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QIMAQwWeHkeNQAABBZJREFUaN7VmluIjVEUx3/DjPvDXA5PzJiRKJT7kGSikQcmKbcMKRQemFHyqtyVPLgVnrx4HzxIkkLGJcRghmIIc2NipsYlw4P11basc873nXzfd2bVbuqcfb69/3ut39rr23sg+2wwsBi4ALQBncBdoBYooA/ZaBHxK0lrBZb0FSGPUwjxWhewMpuFjAGafAjx2k9gUbaK2Qh0BxDjtawVtAnoCSjmZ7aE3HhgufpsKfAjoKAu+V1sVgI0iidWOJ/nSLb6GlBQJ5CIQ0gxUK8mMlv12SArHkTQnjiE3JDBe+XvWSA/SVII4qHmqPeRJ0rIUWCA06ef+k1VQIYiY+S5GviwmnyhrO4qxVBVAA9FIuS2GvQUkOv0GQW8lO8+S22mQy4dQ41hCylzYPdC6zQwyOlTKoWkO7EOQ9CGNB6qDVPIWCe0PCFHFCPDHY50+6LSNpK2LYaehpmay4xaa5/ByDsfG2JCMbRUVQptwJywhFhhc0wxUuyjsPwMzEpR+nQD7UY4/leP3FGhdUKFliVWt7dqtXOAyWqszWEKGSsZxRVyQHkkATSkEdIGzFXP3gm0GAyF5pFGNan9ipEi4H0aId9UaOUA653F6QlbUKkTWl47rjxibZpWsagZWaX6tIcppsyJ/15HyABVxtzxUVfpjLTNeP9fGCYjTUrIfuWRIuBZGiGtRtW8Q22QLSky23/xiA6bAxkw8hWYqhhZZ4TWvDAZqVcDnlAeGe3DIx1KCMBqQ0hoR0tjgHsqtI4pRkp8MPIaKFfP3m6EX2WYjLxQQvYZjKTLWu1G/NcajJSHyYgOm4OKkUSGjFQbYiuiZOQkkKf6NPjwiGZkTdSM3E/DSLGPWuu1EVo1qk8LsCAKRry2VzFS6KP67TDivyZKRhLGah9SjAz38T5iMWKF1vww663pslqpGHniY2fXjFRHyYhngyWkHkjWGqgOHzJhpNZgZD4R2UBghPJIoXOKkqx9SrIhRsaIO9kRKTjKhBGrRFkQhTdWAx/k4G2kTMY7abycRkgLME09b10cjHh23hn4jBNiE4WDIIzsMsRWEKG5GeyCA/5E4FWKN8SZxvvId5XZyqMUMom/r+KagCHO95cMIT0GI2uN0KokYtuiVvMXMEOVLVeEqXbgobGPbIyTEdfOGSv/SPXJEzbm8u+disXIvDiEFAA3kzBR5+P3Ww1GZhGTTZFTxGTZqh6YIKf3eVJsemk7X8LPDa2FxGjL8HeZc5s/13bHpT7zQm+3nA2/JOa7+f78udwM+g8F651nDBM+xhOzDQWuZiDmIzFdVyezXOHAD6y9chb8XV7aLgovHdkkZpzaHF37AryR9lAy3k3hI+ssl3/vOBqBWwJ7k9RdzUR4NZ2p5QDXJZ3WAddk1b9J61P2G96e5C4sN/cBAAAAAElFTkSuQmCC"
+                        height="20px">
+                </a>
+                <a href="{{ url_for('delete_story', story_id=story.id ) }}"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QIMAQw7PaZCQAAAAjZJREFUaN7t2rtrVEEUx/FPEqPxEU0hvlCJiKSw8lVYqFhpYycWRkQEq4CFja21YCMW+Q9stLGx85VEg5WIgoXgayMoiBGixqxkLfYGLzdzr4v7iBvnB1PMnXNnzvfMqzjDIlJHHf/2Y22DffmMl62E6cJFnEJfg4P7BbdwCd9bMZsnUGlyudComVmG5TltZdzH7iYH7BEGMZnTXsE3zBTB7MUQ9qE7p5Md6GwyTBnv8DNnAqYxiqt4EepgAK9asIQaWZ5h3RxAOsLnsLXNTuMBnA7B9Ldg+TRaXYnf82Bm2vCerKT9TsM8TBrbTaN5DXfa7AC4/qd75iyOYil6cKQgKm8whm3JsR46zksYx0bsSfrM6mNyf/VhP1bljPcJ95Kj+yZuJAw1rajegqiMZQa9htmMTQlbUjbnA/1MYFfK5mRyj4TGvFvPetxUADOYsd2ZXHJpmyuBC28qY3M7Y7Mej3PGHClytp6j+GumPhWwmazhv+lMfTbwrSZ1WkSKMBEmwkSYCBNhIkyEiTARJsJEmAgTYSJMhIkwESbCRJhcNSqXU/kXYFZn6r0BmzWB8VZmvq3I1LuF0x51qygLMOJ3PrEHw+anND5ge8rJoUA/JRxKbJbgDH74iyxARw0wEwXtT/BcNZF0MHEmq9eqKcY+1SRWaDW8VX3I0IPDgVmf0ygONGNmFqI8qGfPvNeiBzk1aryeZQbHcDmwmVulDtWM3FMcLwpurU+0NmPDAsKUk71Z9r/oF2QaIN6OBLiPAAAAAElFTkSuQmCC"
+                        height="20px">
+                </a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            No stories yet.
+        </tr>
+    {% endfor %}
+</table>
+<a href="{{ url_for('show_form') }}" class="button" id="add_story"><span>Add new story</span></a>
+</div>
+

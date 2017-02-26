@@ -1,49 +1,17 @@
 <!doctype html>
-<<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <title>Super Sprinter 3000</title>
-    <link href="../static/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/starter-template.css" rel="stylesheet">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css?family=Bad+Script|Gochi+Hand|Just+Another+Hand|Neucha|Patrick+Hand|Rancho|Sue+Ellen+Francisco"
+      rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Fredoka%20One" data-generated="http://enjoycss.com" rel="stylesheet"
+      type="text/css"/>
+<div class=formpage>
     {% if mode == 'update' %}
         <title>Sprinter 3000 - Edit story</title>
+        <div class="long-shadow" align="center">edit story</div>
     {% else %}
         <title>Sprinter 3000 - Add new story</title>
+        <div class="long-shadow" align="center">add new story</div>
     {% endif %}
-</head>
-<body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ url_for('show_list') }}">Super Sprinter 3000</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ url_for('show_list') }}">Home</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    {% if mode == 'update' %}
-        <h1 class="text-center">Edit story</h1>
-    {% else %}
-        <h1 class="text-center">Add new story</h1>
-    {% endif %}
-    <div class="col-lg-4"></div>
-<div class="col-lg-4" style="border-radius: 5px; background-color: #999; padding: 2em">
     <dl>
         <form action="{{ url_for('add_story') }}" method='POST' class="add-story" name="add">
             <dt>
@@ -78,22 +46,15 @@
                 </select></div>
             <dt>
                 {% if mode == 'update' %}
-                    <br>
-                    <button><a href="#" onclick="document.add.submit();"><span>Update</span></a></button>
+                    <a href="#" onclick="document.add.submit();" class="button"><span>Update</span></a>
                     <input type=hidden size=1 name='story_id' readonly id="story_id" value={{ story.id }}>
                     <input type=hidden size=1 name='submit_type' readonly id="submit_id" value='update'>
                 {% elif mode == 'save' %}
-                    <br>
-                    <button><a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a></button>
+                    <a href="#" onclick="document.add.submit();" class="button"><span>Save</span></a>
                     <input type=hidden size=1 name='submit_type' readonly id="submit_id" value='save'>
                 {% endif %}
-                <button style="float: right"><a href="{{ url_for('show_list') }}"><span>Cancel</span></a></button>
+                <a href="{{ url_for('show_list') }}" class="button" style="float: right"><span>Cancel</span></a>
             </dt>
         </form>
     </dl>
 </div>
-</div>
-<div class="modal-footer" style="background-color: #222">
-    <p style="color: white">2017 Made by Matyi Krista</p>
-</div>
-</body>

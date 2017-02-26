@@ -337,6 +337,11 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
 }
 
+.col1:hover {
+    background-color: #000;
+    transition: 0.3s;
+}
+
 input[type=range]:focus::-ms-fill-lower {
     background: #D0F0C0;
 }
